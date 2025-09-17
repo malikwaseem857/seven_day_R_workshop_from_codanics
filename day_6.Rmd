@@ -1,0 +1,172 @@
+---
+title: "R_with_Ammar(Day_6)"
+auther: "Waseem"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+date: "2025-09-04"
+---
+
+
+## importing dataset
+
+```{r}
+df <- mtcars
+head(df)
+```
+```{r}
+tail(df)
+```
+## Import dataset
+## making a heatmap
+# we used as matrix because of to exclude categorical #variables 
+# because meatmap only use numeric values
+```{r}
+# Heatmap
+df <- as.matrix(df)
+heatmap(df)
+```
+
+# lets normalize the value otherwise it will scatter plot # after normalization it will scale or measurable with #other
+# all column are in scale 
+
+```{r}
+heatmap(df, scale = "column")
+```
+# lets add color cm.color is built-in function 
+```{r}
+heatmap(df, scale = "column", col = cm.colors(250))
+```
+```{r}
+heatmap(df, scale = "column", col= terrain.colors(250))
+```
+
+
+# Important #
+# use color blight free plot it will be helpful for #blight people
+
+```{r}
+library(RColorBrewer)
+coul <- colorRampPalette(brewer.pal(8, "PiYG"))(25)
+heatmap(df, scale="column", col = coul)
+```
+
+
+```{r}
+library(RColorBrewer)
+coul <- colorRampPalette(brewer.pal(8, "BrBG"))(25)
+heatmap(df, scale="column", col = coul)
+```
+
+# click on settin to explore more about it
+```{r R Col.Brewer}
+display.brewer.all()
+```
+
+```{r}
+volcano
+```
+# lets convert the data into wide formate from long #formate
+```{r}
+library(tidyverse)
+volcano <- volcano %>% 
+  
+  # data wrangling , as_tibble to convert into tables
+  as_tibble() %>%
+  rowid_to_column(var= "X") %>%
+  gather(key= "Y", value= "Z", -1) %>%
+  
+  # change Y to numeric
+  mutate(Y=as.numeric(gsub("V", "", Y)))
+```
+
+# lets do plotting by piping operator .In piping no need #to write df
+# for coloring we use fill(inner line) or color(outline) in R
+```{r}
+volcano %>% ggplot(aes(X, Y, col = Z))+geom_tile()
+
+```
+```{r}
+volcano %>% ggplot(aes(X, Y, fill = Z))+geom_tile()
+```
+
+
+
+
+```{r}
+library(tidyverse)
+
+volcano_tbl <- as_tibble(volcano) %>%
+  rowid_to_column(var = "x") %>%
+  gather(key = "y", value = "z", -x) %>%
+  mutate(y = as.numeric(gsub("V", "", y)))
+
+ggplot(volcano_tbl, aes(x, y, fill = z)) +
+  geom_tile()
+```
+
+```{r}
+library(ggplot2)
+library(hrbrthemes)
+library(plotly)
+library(dplyr)
+
+# Dummy grid data
+x <- LETTERS[1:20]
+y <- paste0("var", 1:20)
+
+# expand.grid creates all (X,Y) combinations
+data <- expand.grid(X = x, Y = y)
+
+# add random Z values
+set.seed(123)  # reproducible
+data$Z <- runif(nrow(data), 0, 5)
+
+# add tooltip text
+data <- data %>%
+  mutate(text = paste0(
+    "x: ", X, "\n",
+    "y: ", Y, "\n",
+    "value: ", round(Z, 2), "\n",
+    "what else?"
+  ))
+
+head(data)
+
+```
+
+
+
+
+
+
+
+
+
+```{r}
+# classic ggplot with tect in aes
+p <- ggplot(data, aes(X, Y, fill= Z))+
+  geom_tile()+
+  theme_ipsum()
+p
+#pp <- ggplotly(p, tooltip= "text")
+#pp
+```
+```{r}
+# classic ggplot
+ggplotly(p)
+```
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
