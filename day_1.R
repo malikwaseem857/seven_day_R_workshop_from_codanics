@@ -10,7 +10,7 @@ z
 # conditional operators
 x > y
 
-# how to activates repositories----
+# how to activate repositories----
 setRepositories() # set 1-7 repositories
 
 # how to install packages----
@@ -22,4 +22,5 @@ data()
 
 data(iris)
 ggplot(iris, aes(Species, Sepal.Width)) + geom_point()
+
 
