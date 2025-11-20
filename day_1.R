@@ -2,7 +2,7 @@
 x <- 8
 y <- 9
 x+y
-# same object will repeated if insert again
+# same object will repeated if inserted again
 
 z <- x+y
 
@@ -22,3 +22,4 @@ data()
 
 data(iris)
 ggplot(iris, aes(Species, Sepal.Width)) + geom_point()
+
