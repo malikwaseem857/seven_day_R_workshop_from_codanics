@@ -46,7 +46,7 @@ p1 <- ggplot(data = mpg, mapping = aes(x= cty, y = hwy, col= manufacturer)) + ge
 # save 
 ggsave("mpg_polt.pdf", plot = p1, width = 5, height = 6, units = "in")
  # remember size depend upon the A4 paper size 9 inches normally
-# for png used mpi for it it its range is 150-300 maximum
+# for png used mpi for it, its range is 150-300 maximum
 ggsave("mpg_polt.png", plot = p1, width = 5, height = 6, units = "in", dpi = 300)
 ## Try to use in pdf because it can be editable in future
 # tidyverse
@@ -54,6 +54,7 @@ library(tidyverse)
 #  %>% is a pipeline filter
 
 iris %>% select(iris$Species=="Se")
+
 
 
 
