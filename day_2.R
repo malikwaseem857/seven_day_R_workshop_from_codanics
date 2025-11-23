@@ -20,7 +20,7 @@ ggplot(data = iris, mapping = aes(x= Sepal.Length, y= Sepal.Width))+
 # adding color
 ggplot(data = iris, mapping = aes(x= Sepal.Length, y= Sepal.Width,
                                   col = Species))+ geom_point()
-# changes based on sizes # this doesn't make sense or good
+# changes based on sizes # this doesn't make sense or is good
 ggplot(data = iris, mapping = aes(x= Sepal.Length, y= Sepal.Width,
                                   size = Species))+ geom_point()
 # changes based on shapes
@@ -54,4 +54,5 @@ library(tidyverse)
 #  %>% is a pipeline filter
 
 iris %>% select(iris$Species=="Se")
+
 
