@@ -16,7 +16,7 @@ ggplot(data = iris, mapping = aes(x= iris$Sepal.Length, y=iris$Sepal.Width))+
 
 ggplot(data = iris, mapping = aes(x= Sepal.Length, y= Sepal.Width))+
   geom_point()
-# colour should be in categorical variables bases
+# colour should be in categorical variable bases
 # adding color
 ggplot(data = iris, mapping = aes(x= Sepal.Length, y= Sepal.Width,
                                   col = Species))+ geom_point()
@@ -52,4 +52,5 @@ ggsave("mpg_polt.png", plot = p1, width = 5, height = 6, units = "in", dpi = 300
 # tidyverse
 library(tidyverse)
 #  %>% is a pipeline filter
+
 iris %>% select(iris$Species=="Se")
