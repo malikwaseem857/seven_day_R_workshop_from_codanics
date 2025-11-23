@@ -39,7 +39,7 @@ ggplot(data = iris, mapping = aes(x= Sepal.Length,
 # plot on mpg
 data(mpg)
 ggplot(data = mpg, mapping = aes(x= cty, y = hwy)) + geom_point()
-# lets add color
+# let's add color
 ggplot(data = mpg, mapping = aes(x= cty, y = hwy, col= manufacturer)) + geom_point()
 # how to save the plot by export, 
 p1 <- ggplot(data = mpg, mapping = aes(x= cty, y = hwy, col= manufacturer)) + geom_point()
@@ -54,3 +54,4 @@ library(tidyverse)
 #  %>% is a pipeline filter
 
 iris %>% select(iris$Species=="Se")
+
